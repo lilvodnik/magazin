@@ -3137,7 +3137,6 @@
   },
   "projectFileDependencyGroups": {
     "net9.0": [
-      "..\\BlazorClient\\BlazorClient.csproj",
       "Microsoft.AspNetCore.OpenApi >= 9.0.3",
       "Microsoft.EntityFrameworkCore.Design >= 9.0.5",
       "Microsoft.EntityFrameworkCore.Sqlite >= 9.0.5"
@@ -3194,10 +3193,6 @@
       "net9.0": {
         "targetAlias": "net9.0",
         "dependencies": {
-          "..\\BlazorClient\\BlazorClient.csproj": {
-            "target": "Package",
-            "version": "(, )"
-          },
           "Microsoft.AspNetCore.OpenApi": {
             "target": "Package",
             "version": "[9.0.3, )"
@@ -3235,26 +3230,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300/PortableRuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1604",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Project dependency ..\\BlazorClient\\BlazorClient.csproj does not contain an inclusive lower bound. Include a lower bound in the dependency version to ensure consistent restore results.",
-      "libraryId": "..\\BlazorClient\\BlazorClient.csproj",
-      "targetGraphs": [
-        ".NETCoreApp,Version=v9.0"
-      ]
-    },
-    {
-      "code": "NU1101",
-      "level": "Error",
-      "message": "Unable to find package ..\\BlazorClient\\BlazorClient.csproj. No packages exist with this id in source(s): C:\\Program Files\\dotnet\\library-packs, Microsoft Visual Studio Offline Packages, nuget.org",
-      "libraryId": "..\\BlazorClient\\BlazorClient.csproj",
-      "targetGraphs": [
-        "net9.0"
-      ]
-    }
-  ]
+  }
 }

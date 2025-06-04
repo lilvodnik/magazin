@@ -51,10 +51,6 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "dependencies": {
-            "..\\BlazorClient\\BlazorClient.csproj": {
-              "target": "Package",
-              "version": "(, )"
-            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[9.0.3, )"

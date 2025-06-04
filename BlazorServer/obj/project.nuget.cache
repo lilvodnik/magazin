@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "dgSpecHash": "SnJCvtMvl38=",
-  "success": false,
+  "dgSpecHash": "AVsCrSBfQ+E=",
+  "success": true,
   "projectFilePath": "C:\\Users\\1687665\\Desktop\\magazin\\BlazorServer\\BlazorServer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\1687665\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
@@ -54,29 +54,5 @@
     "C:\\Users\\1687665\\.nuget\\packages\\system.text.json\\9.0.5\\system.text.json.9.0.5.nupkg.sha512",
     "C:\\Users\\1687665\\.nuget\\packages\\system.threading.channels\\7.0.0\\system.threading.channels.7.0.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1604",
-      "level": "Warning",
-      "message": "Project dependency ..\\BlazorClient\\BlazorClient.csproj does not contain an inclusive lower bound. Include a lower bound in the dependency version to ensure consistent restore results.",
-      "projectPath": "C:\\Users\\1687665\\Desktop\\magazin\\BlazorServer\\BlazorServer.csproj",
-      "warningLevel": 1,
-      "filePath": "C:\\Users\\1687665\\Desktop\\magazin\\BlazorServer\\BlazorServer.csproj",
-      "libraryId": "..\\BlazorClient\\BlazorClient.csproj",
-      "targetGraphs": [
-        ".NETCoreApp,Version=v9.0"
-      ]
-    },
-    {
-      "code": "NU1101",
-      "level": "Error",
-      "message": "Unable to find package ..\\BlazorClient\\BlazorClient.csproj. No packages exist with this id in source(s): C:\\Program Files\\dotnet\\library-packs, Microsoft Visual Studio Offline Packages, nuget.org",
-      "projectPath": "C:\\Users\\1687665\\Desktop\\magazin\\BlazorServer\\BlazorServer.csproj",
-      "filePath": "C:\\Users\\1687665\\Desktop\\magazin\\BlazorServer\\BlazorServer.csproj",
-      "libraryId": "..\\BlazorClient\\BlazorClient.csproj",
-      "targetGraphs": [
-        "net9.0"
-      ]
-    }
-  ]
+  "logs": []
 }

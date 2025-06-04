@@ -31,6 +31,5 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
 app.MapControllers();
-app.MapFallbackToFile("index.html");
 
 app.Run();

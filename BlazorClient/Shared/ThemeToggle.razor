@@ -1,0 +1,54 @@
+@inject IJSRuntime JSRuntime
+@implements IDisposable
+
+<button @onclick="ToggleTheme" class="theme-toggle">
+    @if (isDarkMode)
+    {
+        <span class="oi oi-sun"></span>
+        <span class="text">Светлая</span>
+    }
+    else
+    {
+        <span class="oi oi-moon"></span>
+        <span class="text">Тёмная</span>
+    }
+</button>
+<style>
+    .text{
+        color: rgb(255, 255, 255);
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-right: auto;
+    }
+</style>
+@code {
+    private bool isDarkMode = false;
+    private DotNetObjectReference<ThemeToggle>? objRef;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            objRef = DotNetObjectReference.Create(this);
+            await JSRuntime.InvokeVoidAsync("themeManager.init", objRef);
+        }
+    }
+
+    [JSInvokable]
+    public void SetTheme(bool darkMode)
+    {
+        isDarkMode = darkMode;
+        StateHasChanged();
+    }
+
+    private async Task ToggleTheme()
+    {
+        isDarkMode = !isDarkMode;
+        await JSRuntime.InvokeVoidAsync("themeManager.toggleTheme", isDarkMode);
+    }
+
+    public void Dispose()
+    {
+        objRef?.Dispose();
+    }
+}

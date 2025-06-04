@@ -1,0 +1,69 @@
+﻿@inherits LayoutComponentBase
+
+<div class="page">
+    <div class="sidebar">
+        <NavMenu />
+    </div>
+
+    <main>
+        <div class="top-row navbar navbar-dark bg-dark-green">
+            <div class="container-fluid">
+                <span class="navbar-brand">МАГАЗИН</span>
+                <ThemeToggle />
+            </div>
+        </div>
+
+        <article class="content px-4">
+            @Body
+        </article>
+    </main>
+</div>
+
+<style>
+    .bg-dark-green {
+        background-image: url('swaga.jpg') !important; 
+        background-size: cover;     
+        background-position: center; 
+        background-repeat: no-repeat; 
+        position: relative; 
+    }
+    
+    .top-row {
+        height: 3.5rem;
+        display: flex;
+        align-items: center;
+        padding: 0 1rem;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        color: white; 
+    }
+    
+    .navbar-brand {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-right: auto;
+    }
+    .sidebar {
+        background-image: url('side.jpg'); 
+        background-size: cover;     
+        background-position: center; 
+        background-repeat: no-repeat; 
+        position: relative;          
+    }
+
+    .sidebar::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.2); 
+        z-index: 1;
+    }
+    .sidebar > * {
+        position: relative;
+        z-index: 2;
+    }
+</style>

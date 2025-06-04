@@ -1,0 +1,108 @@
+@page "/products"
+@using BlazorClient.Data
+@using BlazorClient.Services
+@using System.Linq
+@inject ProductService ProductService
+@inject NavigationManager Navigation
+@inject IJSRuntime JSRuntime
+
+<h3 class="page-title">Управление товарами</h3>
+<style>
+    .page-title {
+        margin-top: 1rem;
+        margin-bottom: 1.5rem;
+        color: #1a472a; 
+        font-weight: bold;
+        border-bottom: 2px solid #1a472a;
+        padding-bottom: 0.5rem;
+    }
+</style>
+@if (products == null)
+{
+    <p>Загрузка данных...</p>
+}
+else if (!products.Any())
+{
+    <p>Нет доступных товаров</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Название</th>
+                <th>Цена</th>
+                <th>Описание</th>
+                <th>Действия</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in products)
+            {
+                <tr>
+                    <td>@product.Id</td>
+                    <td>@product.Name</td>
+                    <td>@product.Price.ToString("C")</td>
+                    <td>@product.Description</td>
+                    <td>
+                        <button class="btn btn-primary btn-sm" 
+                                @onclick="() => EditProduct(product.Id)">
+                            Изменить
+                        </button>
+                        <button class="btn btn-danger btn-sm" 
+                                @onclick="() => DeleteProduct(product)">
+                            Удалить
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<button class="btn btn-success" @onclick="AddProduct">Добавить товар</button>
+
+@code {
+    private List<Product>? products;
+    private Product? productToDelete;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            await LoadProducts();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error: {ex.Message}");
+        }
+    }
+    private async Task LoadProducts()
+    {
+        products = await ProductService.GetProductsAsync();
+    }
+
+    private void AddProduct()
+    {
+        Navigation.NavigateTo("/add-product");
+    }
+
+    private void EditProduct(int id)
+    {
+        Navigation.NavigateTo($"/edit-product/{id}");
+    }
+
+    private async Task DeleteProduct(Product product)
+    {
+        productToDelete = product;
+        var confirmed = await JSRuntime.InvokeAsync<bool>("confirm", 
+            $"Вы уверены, что хотите удалить товар: {product.Name}?");
+        
+        if (confirmed)
+        {
+            await ProductService.DeleteProductAsync(product.Id);
+            await LoadProducts();
+        }
+    }
+}

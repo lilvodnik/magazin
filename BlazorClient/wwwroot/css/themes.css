@@ -1,0 +1,82 @@
+:root {
+    /* Общие переменные */
+    --transition-speed: 0.3s;
+    
+    /* Светлая тема */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8f9fa;
+    --text-primary: #212529;
+    --text-secondary: #495057;
+    --border-color: #dee2e6;
+    --primary-color: #0d6efd;
+    --secondary-color: #6c757d;
+    --toggle: #000;
+}
+
+[data-theme="dark"] {
+    /* Тёмная тема */
+    --bg-primary: #1a1a1a;
+    --bg-secondary: #2d2d2d;
+    --text-primary: #f8f9fa;
+    --text-secondary: #adb5bd;
+    --border-color: #444;
+    --primary-color: #0d6efd;
+    --secondary-color: #6c757d;
+    --toggle: #000;
+}
+
+/* Применение переменных */
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background-color var(--transition-speed), 
+                color var(--transition-speed);
+}
+
+.navbar, .card, .modal-content, .table {
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+
+.table th, .table td {
+    border-color: var(--border-color);
+}
+
+.form-control, .form-select {
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+}
+
+.theme-toggle {
+    background: none;
+    border: none;
+    color: var(--toggle);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.oi {
+    font-size: 1.1rem;
+    vertical-align: text-top;
+    top: 2px;
+}
+
+.theme-toggle .text {
+    @media (max-width: 768px) {
+        display: none;
+    }
+}
